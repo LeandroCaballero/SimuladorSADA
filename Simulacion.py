@@ -12,7 +12,8 @@ from PyQt5.QtWidgets import *
 from PyQt5.uic.properties import QtGui
 
 #Importamos todas nuetras Ventana y funciones utiles
-from UI.ventana import *
+import ventana
+Ventana = ventana.Ui_MainWindow()
 
 import Franja 
 Franja=Franja.Franja
@@ -22,16 +23,17 @@ Materia= Materias.Materia
 aulasDosModulos=0
 aulasTresModulos=0
 
-class Simulacion:
+class Simulacion(QMainWindow):
     def __init__(self):
         self.materiasNoAsignadasTresModulos=[]
         self.materias=[]
         self.materiasNoAsignadasDosModulos=[]
-        #Incializamos nuestra app#
+        
+        #Incializamos nuestra app
         QMainWindow.__init__(self)
 
         # Instanciamos nuestra ventanas widget ventana
-        self.ventana = Ui_home()
+        self.ventana = Ventana
         self.ventana.setupUi(self)
 
         # Eventos, cuando aprete el boton simular se ejecuta "simular"
@@ -175,3 +177,20 @@ for x in sim.fran.dia.aulas:
     for y in x.horas:
         print("     ", y.hora)
         print("         ", y.asignado)
+
+
+def iniciar():
+    # Instaciamos nuestro app por defecto esto no cambia
+    app = QApplication(sys.argv)
+
+    # Instanciamos nuestra ventana
+    ventana = Simulacion()
+    # Mostramos nuestra app
+    ventana.show()
+
+    #Controlamos el cierre de la app
+    sys.exit(app.exec_())
+
+
+if __name__ == '__main__':
+    iniciar()
