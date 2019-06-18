@@ -23,7 +23,7 @@ aulasTresModulos=0
 
 from PyQt5 import QtCore, QtGui, QtWidgets
 
-class Ui_MainWindow(object):
+class Simulacion(object):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
         MainWindow.resize(513, 432)
@@ -105,7 +105,7 @@ class Ui_MainWindow(object):
     def operacion(self):
         franja = self.franjaHoraria.currentText()
         dia = self.dia.currentText()
-        sim= Ui_MainWindow()
+        sim= Simulacion()
         sim.simulacionFranjaDia(franja,dia)
         for x in sim.fran.dia.aulas:
             print(x.descripcion)
@@ -235,7 +235,7 @@ if __name__ == "__main__":
     import sys
     app = QtWidgets.QApplication(sys.argv)
     MainWindow = QtWidgets.QMainWindow()
-    ui = Ui_MainWindow()
+    ui = Simulacion()
     ui.setupUi(MainWindow)
     MainWindow.show()
     sys.exit(app.exec_())
