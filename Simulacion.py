@@ -11,9 +11,8 @@ import sys
 from PyQt5.QtWidgets import *
 from PyQt5.uic.properties import QtGui
 
-#Importamos todas nuetras Ventana y funciones utiles
+#Importamos ventana.py
 import ventana
-Ventana = ventana.Ui_MainWindow()
 
 import Franja 
 Franja=Franja.Franja
@@ -33,7 +32,7 @@ class Simulacion(QMainWindow):
         QMainWindow.__init__(self)
 
         # Instanciamos nuestra ventanas widget ventana
-        self.ventana = Ventana
+        self.ventana = ventana.Ui_MainWindow()
         self.ventana.setupUi(self)
 
         # Eventos, cuando aprete el boton simular se ejecuta "simular"
